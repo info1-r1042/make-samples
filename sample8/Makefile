@@ -1,24 +1,24 @@
-# Brief:  Sample 8
+# Brief:  GNU Make - Sample 8
 # Author: Javier Balloffet <javier.balloffet@gmail.com>
 # Date:   Jul 5, 2019
 
-AUTHOR="JavierBalloffet"
-CLASS="R1042"
-TP="TP1"
-YEAR="2019"
+AUTHOR   = "JavierBalloffet"
+CLASS    = "R1042"
+EXERCISE = "1_1"
+YEAR     = "2020"
 
-CC=gcc
-CFLAGS=-c -Wall
-LDFLAGS=-lm
+CC      = gcc
+CFLAGS  = -c -Wall
+LDFLAGS = -lm
 
-SOURCES=$(wildcard *.c)
-OBJS=$(patsubst %.c, %.o, $(wildcard *.c))
-HEADERS=$(wildcard *.h)
-EXEC=app
+SOURCES = $(wildcard *.c)
+HEADERS = $(wildcard *.h)
+OBJS    = $(patsubst %.c, %.o, $(SOURCES))
+EXEC    = app
 
-FILE_NAME=$(AUTHOR)-$(CLASS)-$(TP)-$(YEAR).tar.gz
+FILE_NAME = $(AUTHOR)-$(CLASS)-$(EXERCISE)-$(YEAR).tar.gz
 
-.PHONY: all clean compress edit run
+.PHONY: all clean compress edit
 
 all: $(EXEC)
 
@@ -36,6 +36,3 @@ compress: $(SOURCES) $(HEADERS) Makefile
 
 edit:
 	code .
-
-run: $(EXEC)
-	./$(EXEC)

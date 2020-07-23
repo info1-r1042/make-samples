@@ -1,28 +1,18 @@
-/**
- * \file            main.c
- * \brief           Ejemplo Makefile
- * \author          Javier Balloffet
- * \date            Jul 5, 2019
- * \details         Usar makefile para compilar, linkear y ejecutar
+/*!
+ * @file   main.c
+ * @brief  GNU Make - Sample code
+ * @author Javier Balloffet <javier.balloffet@gmail.com>
+ * @date   Jul 5, 2019
  */
-
 #include <stdio.h>
 #include "functions.h"
 
 int main() {
-    int number;
-    float squareRoot;
+  int number;
 
-    /* 1. Solicito 1 número por consola */
-    printf("Ingrese un numero: ");
-    scanf("%d", &number);
+  printf("Ingrese un numero: ");
+  scanf("%d", &number);
+  printf("Raiz cuadrada = %.2f\n", get_square_root(number));
 
-    /* 2. Invoco a la función "get_square_root", pasándole "number" como argumento.
-        Almaceno el valor que retorna la función en la variable "squareRoot" */
-    squareRoot = get_square_root(number);
-
-    /* 3. Imprimo en pantalla el resultado de la raíz cuadrada */
-    printf("Raiz cuadrada = %.2f\n", squareRoot);
-
-    return 0;
+  return 0;
 }

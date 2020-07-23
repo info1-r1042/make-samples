@@ -1,4 +1,4 @@
-# Brief:  Sample 1
+# Brief:  GNU Make - Sample 1
 # Author: Javier Balloffet <javier.balloffet@gmail.com>
 # Date:   Jul 5, 2019
 
@@ -14,5 +14,5 @@ functions.o: functions.c
 	gcc -c functions.c -o functions.o -Wall
 
 clean:
-	rm -f ./*.o
+	rm -f *.o
 	rm -f app

@@ -2,6 +2,11 @@
 # Author: Javier Balloffet <javier.balloffet@gmail.com>
 # Date:   Jul 5, 2019
 
+SOURCES = $(wildcard *.c)
+HEADERS = $(wildcard *.h)
+OBJS    = $(patsubst %.c, %.o, $(SOURCES))
+EXEC    = app
+
 CC           = gcc
 CFLAGS       = -c -Wall
 EXTRA_CFLAGS =
@@ -10,11 +15,6 @@ LDFLAGS      = -lm
 ifdef DEBUG
   EXTRA_CFLAGS += -g -O0 -DDEBUG
 endif
-
-SOURCES = $(wildcard *.c)
-HEADERS = $(wildcard *.h)
-OBJS    = $(patsubst %.c, %.o, $(SOURCES))
-EXEC    = app
 
 .PHONY: all clean
 

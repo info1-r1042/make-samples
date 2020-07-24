@@ -57,7 +57,7 @@ DOC_DIR  = doc
 # MAKE TARGETS                                                 #
 ################################################################
 
-.PHONY: all clean compress edit doc help
+.PHONY: all clean pkg edit doc help
 
 all: $(EXEC)
 
@@ -76,7 +76,7 @@ clean:
 	@echo '[RM] Cleaning workspace'
 	rm -rf $(BUILD_DIR) $(BIN_DIR) $(DOC_DIR)
 
-compress:
+pkg:
 	@echo '[TAR] Packing workspace'
 	tar -zcvf $(FILE_NAME) $(SRC_DIR) Makefile $(DOC_FILE)
 
@@ -90,14 +90,9 @@ doc:
 	$(DOC_GEN) $(DOC_FILE)
 
 help:
-	@echo ''
-	@echo '********************************************************'
-	@echo '  Usage:'
-	@echo '    make all:       Compiles and links the application'
-	@echo '    make clean:     Removes objects and executable'
-	@echo '    make compress:  Generates .tar.gz file'
-	@echo '    make edit:      Opens code files with text editor'
-	@echo '    make doc:       Generates code documentation'
-	@echo '    make help:      Shows help'
-	@echo '********************************************************'
-	@echo ''
+	@echo 'all:   Compiles and links the application'
+	@echo 'clean: Removes objects and executable'
+	@echo 'pkg:   Generates .tar.gz file'
+	@echo 'edit:  Opens code files with text editor'
+	@echo 'doc:   Generates code documentation'
+	@echo 'help:  Shows help'

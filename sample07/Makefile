@@ -2,14 +2,14 @@
 # Author: Javier Balloffet <javier.balloffet@gmail.com>
 # Date:   Jul 5, 2019
 
-CC      = gcc
-CFLAGS  = -c -Wall
-LDFLAGS = -lm
-
 SOURCES = $(wildcard *.c)
 HEADERS = $(wildcard *.h)
 OBJS    = $(patsubst %.c, %.o, $(SOURCES))
 EXEC    = app
+
+CC      = gcc
+CFLAGS  = -c -Wall
+LDFLAGS = -lm
 
 .PHONY: all clean
 

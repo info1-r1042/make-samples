@@ -57,10 +57,9 @@ DOC_DIR  = doc
 # MAKE TARGETS                                                 #
 ################################################################
 
-.PHONY: all clean compress edit doc help
+.PHONY: all clean pkg edit doc help
 
-## Usage:
-##   make all:       Compiles and links the application
+## all:   Compiles and links the application
 all: $(EXEC)
 
 $(EXEC): $(OBJS)
@@ -74,27 +73,27 @@ $(BUILD_DIR)/%.o: %.c Makefile
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@
 
-##   make clean:     Removes objects and executable
+## clean: Removes objects and executable
 clean:
 	@echo '[RM] Cleaning workspace'
 	rm -rf $(BUILD_DIR) $(BIN_DIR) $(DOC_DIR)
 
-##   make compress:  Generates .tar.gz file
-compress:
+## pkg:   Generates .tar.gz file
+pkg:
 	@echo '[TAR] Packing workspace'
 	tar -zcvf $(FILE_NAME) $(SRC_DIR) Makefile $(DOC_FILE)
 
-##   make edit:      Opens code files with text editor
+## edit:  Opens code files with text editor
 edit:
 	@echo '[ED] Editing workspace'
 	$(TEXT_EDITOR) .
 
-##   make doc:       Generates code documentation
+## doc:   Generates code documentation
 doc:
 	@echo '[DOC] Generating documentation'
 	@mkdir -p $(DOC_DIR)
 	$(DOC_GEN) $(DOC_FILE)
 
-##   make help:      Shows help
+## help:  Shows help
 help:
 	@sed -n 's/^## //p' Makefile

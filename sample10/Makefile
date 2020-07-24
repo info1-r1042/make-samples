@@ -7,15 +7,6 @@ CLASS    = "R1042"
 EXERCISE = "1_1"
 YEAR     = "2020"
 
-CC           = gcc
-CFLAGS       = -c -Wall
-EXTRA_CFLAGS =
-LDFLAGS      = -lm
-
-ifdef DEBUG
-  EXTRA_CFLAGS += -g -O0 -DDEBUG
-endif
-
 SRC_DIR   = src
 BUILD_DIR = build
 BIN_DIR   = bin
@@ -25,6 +16,15 @@ HEADERS = $(shell find $(SRC_DIR) -name '*.h')
 OBJS    = $(patsubst %.c, $(BUILD_DIR)/%.o, $(SOURCES))
 EXEC    = app
 
+CC           = gcc
+CFLAGS       = -c -Wall
+EXTRA_CFLAGS =
+LDFLAGS      = -lm
+
+ifdef DEBUG
+  EXTRA_CFLAGS += -g -O0 -DDEBUG
+endif
+
 FILE_NAME = $(AUTHOR)-$(CLASS)-$(EXERCISE)-$(YEAR).tar.gz
 
 TEXT_EDITOR = code
@@ -33,7 +33,7 @@ DOC_GEN  = doxygen
 DOC_FILE = Doxyfile
 DOC_DIR  = doc
 
-.PHONY: all clean compress edit doc
+.PHONY: all clean pkg edit doc
 
 all: $(EXEC)
 
@@ -48,7 +48,7 @@ $(BUILD_DIR)/%.o: %.c Makefile
 clean:
 	rm -rf $(BUILD_DIR) $(BIN_DIR) $(DOC_DIR)
 
-compress:
+pkg:
 	tar -zcvf $(FILE_NAME) $(SRC_DIR) Makefile $(DOC_FILE)
 
 edit:

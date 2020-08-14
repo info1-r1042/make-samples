@@ -1,11 +1,6 @@
-# Brief:  GNU Make - Sample 10
+# Brief:  GNU Make - Samples
 # Author: Javier Balloffet <javier.balloffet@gmail.com>
 # Date:   Jul 5, 2019
-
-AUTHOR   = "JavierBalloffet"
-CLASS    = "R1042"
-EXERCISE = "1_1"
-YEAR     = "2020"
 
 SRC_DIR   = src
 BUILD_DIR = build
@@ -25,15 +20,7 @@ ifdef DEBUG
   EXTRA_CFLAGS += -g -O0 -DDEBUG
 endif
 
-FILE_NAME = $(AUTHOR)-$(CLASS)-$(EXERCISE)-$(YEAR).tar.gz
-
-TEXT_EDITOR = code
-
-DOC_GEN  = doxygen
-DOC_FILE = Doxyfile
-DOC_DIR  = doc
-
-.PHONY: all clean pkg edit doc
+.PHONY: all clean
 
 all: $(EXEC)
 
@@ -46,14 +33,4 @@ $(BUILD_DIR)/%.o: %.c Makefile
 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@
 
 clean:
-	rm -rf $(BUILD_DIR) $(BIN_DIR) $(DOC_DIR)
-
-pkg:
-	tar -zcvf $(FILE_NAME) $(SRC_DIR) Makefile $(DOC_FILE)
-
-edit:
-	$(TEXT_EDITOR) .
-
-doc:
-	@mkdir -p $(DOC_DIR)
-	$(DOC_GEN) $(DOC_FILE)
+	rm -rf $(BUILD_DIR) $(BIN_DIR)

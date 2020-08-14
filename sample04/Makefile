@@ -1,4 +1,4 @@
-# Brief:  GNU Make - Sample 4
+# Brief:  GNU Make - Samples
 # Author: Javier Balloffet <javier.balloffet@gmail.com>
 # Date:   Jul 5, 2019
 
@@ -11,13 +11,13 @@ OBJS = main.o functions.o
 .PHONY: clean
 
 app: $(OBJS)
-	$(CC) $(OBJS) $(LDFLAGS) -o $@
+	$(CC) $(OBJS) $(LDFLAGS) -o app
 
 main.o: main.c
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) main.c -o main.o
 
 functions.o: functions.c
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) functions.c -o functions.o
 
 clean:
 	rm -f $(OBJS) app

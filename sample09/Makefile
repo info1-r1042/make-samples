@@ -1,14 +1,10 @@
-# Brief:  GNU Make - Sample 9
+# Brief:  GNU Make - Samples
 # Author: Javier Balloffet <javier.balloffet@gmail.com>
 # Date:   Jul 5, 2019
 
-SRC_DIR   = src
-BUILD_DIR = build
-BIN_DIR   = bin
-
-SOURCES = $(shell find $(SRC_DIR) -name '*.c')
-HEADERS = $(shell find $(SRC_DIR) -name '*.h')
-OBJS    = $(patsubst %.c, $(BUILD_DIR)/%.o, $(SOURCES))
+SOURCES = $(wildcard *.c)
+HEADERS = $(wildcard *.h)
+OBJS    = $(patsubst %.c, %.o, $(SOURCES))
 EXEC    = app
 
 CC           = gcc
@@ -25,12 +21,10 @@ endif
 all: $(EXEC)
 
 $(EXEC): $(OBJS)
-	@mkdir -p $(BIN_DIR)
-	$(CC) $(OBJS) $(LDFLAGS) -o $(BIN_DIR)/$@
+	$(CC) $(OBJS) $(LDFLAGS) -o $@
 
-$(BUILD_DIR)/%.o: %.c Makefile
-	@mkdir -p $(dir $@)
+%.o: %.c Makefile
 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@
 
 clean:
-	rm -rf $(BUILD_DIR) $(BIN_DIR)
+	rm -f $(OBJS) $(EXEC)

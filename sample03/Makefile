@@ -1,23 +1,19 @@
-# Brief:  GNU Make - Sample 3
+# Brief:  GNU Make - Samples
 # Author: Javier Balloffet <javier.balloffet@gmail.com>
 # Date:   Jul 5, 2019
 
-CC      = gcc
-CFLAGS  = -c -Wall
-LDFLAGS = -lm
-
-OBJS = main.o functions.o
+CC = gcc
 
 .PHONY: clean
 
-app: $(OBJS)
-	$(CC) $(OBJS) $(LDFLAGS) -o app
+app: main.o functions.o
+	$(CC) main.o functions.o -o app -lm
 
 main.o: main.c
-	$(CC) $(CFLAGS) main.c -o main.o
+	$(CC) -c main.c -o main.o -Wall
 
 functions.o: functions.c
-	$(CC) $(CFLAGS) functions.c -o functions.o
+	$(CC) -c functions.c -o functions.o -Wall
 
 clean:
-	rm -f $(OBJS) app
+	rm -f *.o app

@@ -59,6 +59,7 @@ DOC_DIR  = doc
 
 .PHONY: all clean pkg edit doc help
 
+## all:   Compiles and links the application
 all: $(EXEC)
 
 $(EXEC): $(OBJS)
@@ -72,27 +73,27 @@ $(BUILD_DIR)/%.o: %.c Makefile
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@
 
+## clean: Removes objects and executable
 clean:
 	@echo '[RM] Cleaning workspace'
 	rm -rf $(BUILD_DIR) $(BIN_DIR) $(DOC_DIR)
 
+## pkg:   Generates .tar.gz file
 pkg:
 	@echo '[TAR] Packing workspace'
 	tar -zcvf $(FILE_NAME) $(SRC_DIR) Makefile $(DOC_FILE)
 
+## edit:  Opens code files with text editor
 edit:
 	@echo '[ED] Editing workspace'
 	$(TEXT_EDITOR) .
 
+## doc:   Generates code documentation
 doc:
 	@echo '[DOC] Generating documentation'
 	@mkdir -p $(DOC_DIR)
 	$(DOC_GEN) $(DOC_FILE)
 
+## help:  Shows help
 help:
-	@echo 'all:   Compiles and links the application'
-	@echo 'clean: Removes objects and executable'
-	@echo 'pkg:   Generates .tar.gz file'
-	@echo 'edit:  Opens code files with text editor'
-	@echo 'doc:   Generates code documentation'
-	@echo 'help:  Shows help'
+	@sed -n 's/^## //p' Makefile

@@ -2,7 +2,7 @@
 
 # GNU Make Samples
 
-This repository acts as support material for the students of Introduction to CS at National Technological University.
+This repository acts as support material for the students of Introduction to CS at National Technological University. It consists of a series of samples that incrementally show different features of GNU Make.
 
 ## Getting Started
 
@@ -31,30 +31,20 @@ You can get the source by "git clone" this git repository.
   git clone https://github.com/jballoffet/make-samples.git
 ```
 
-To build all sample applications execute the following:
+To build a sample application execute the following:
 
 ```shell
-  cd make-samples
-  bash ci/build_app.sh
+  cd make-samples/sampleXX
+  make app
 ```
 
 ### Running
 
-To run the sample application execute the following:
+To run a sample application execute the following:
 
 ```shell
-  ./app.out
+  ./app
 ```
-
-## Contributing
-
-Please read [CONTRIBUTING.md](/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-See also the list of [contributors](https://github.com/jballoffet/make-samples/contributors) who participated in this project.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/jballoffet/make-samples/tags).
 
 ## Authors
 
